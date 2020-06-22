@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace ClassroomApp.Services
 {
-    interface IClassroomService
+    public interface IClassroomService
     {
         bool AddStudent(Student student);
 
