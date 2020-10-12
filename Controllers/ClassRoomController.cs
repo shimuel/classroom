@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClassroomApp.Services;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using ClassroomApp.Model;
 
 namespace ClassroomApp.Controllers
 {
     [ApiController]
-    [Route("api/Classroom/Student")]
+    [Route("api/Classroom/Departments")]
     public class ClassRoomController : ControllerBase
     {
         private IClassroomService _classroomService; 
@@ -22,27 +24,20 @@ namespace ClassroomApp.Controllers
         [HttpPost]
         public ActionResult<bool> AddStudent(Student student)
         {
-            if(_classroomService == null)
-            {
-                return NotFound();
-            }
-
-            var result = _classroomService.AddStudent(student);
-
-            return result;
+            return true;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Student>> GetStudents()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IList<Department>> GetAllDepartments()
         {
-            if(_classroomService == null)
+            if (_classroomService == null)
             {
                 return NotFound();
             }
 
-            var result = _classroomService.GetAllStudents().ToList();
-            return result;
+            return _classroomService.GetAllDepartments().ToList();
         }
-
     }
 }

@@ -10,7 +10,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
+using HotChocolate;
+using HotChocolate.AspNetCore;
+using HotChocolate.AspNetCore.Voyager;
+using HotChocolate.Execution.Configuration;
+using HotChocolate.Subscriptions;
+
+
 using ClassroomApp.Services;
+using ClassroomApp.Types;
 
 namespace ClassroomApp
 {
@@ -26,9 +35,19 @@ namespace ClassroomApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
 
             services.AddSingleton<IClassroomService, ClassroomService>();
+
+            services.AddGraphQL(
+            SchemaBuilder.New()
+                .AddQueryType<Query>()
+                .AddType<DepartmentType>()
+                .AddType<StudentType>()
+                .AddType<SubjectType>()
+                .Create(),
+                new QueryExecutionOptions { ForceSerialExecution = true }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,10 +64,11 @@ namespace ClassroomApp
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
+
+            app.UseWebSockets()
+                .UseGraphQL()
+                .UsePlayground();
         }
     }
 }
