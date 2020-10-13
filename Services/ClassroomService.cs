@@ -84,7 +84,41 @@ namespace ClassroomApp.Services
             {
                 Id = "engg",
                 Name = "Engineering",
-                Students = new List<Student> { new Student() { Id = 6, Name = "Bar Barr", Grade = "2", Subjects = new List<Subject> { new Subject() { Id = cacl, Name = "Calculus" }, new Subject() { Id = math, Name = "Discrete Math" } } } },
+                Students = new List<Student> { new Student() { Id = 11, Name = "Bar11 Barr", Grade = "2", Subjects = new List<Subject> { new Subject() { Id = cacl, Name = "Calculus" }, new Subject() { Id = math, Name = "Discrete Math" } } } },
+                Professor = new Professor() { Id = 8, Name = "Jim", Employment = EmploymentStatus.FullTime, Height = 1.69d }
+            });
+             _departments.Add(new Department()
+            {
+                Id = "a",
+                Name = "a",
+                Students = new List<Student> { new Student() { Id = 12, Name = "Bar12 Barr", Grade = "2", Subjects = new List<Subject> { new Subject() { Id = cacl, Name = "Calculus" }, new Subject() { Id = math, Name = "Discrete Math" } } } },
+                Professor = new Professor() { Id = 8, Name = "Jim", Employment = EmploymentStatus.FullTime, Height = 1.69d }
+            });
+             _departments.Add(new Department()
+            {
+                Id = "b",
+                Name = "b",
+                Students = new List<Student> { new Student() { Id = 13, Name = "Bar13 Barr", Grade = "2", Subjects = new List<Subject> { new Subject() { Id = cacl, Name = "Calculus" }, new Subject() { Id = math, Name = "Discrete Math" } } } },
+                Professor = new Professor() { Id = 8, Name = "Jim", Employment = EmploymentStatus.FullTime, Height = 1.69d }
+            });
+             _departments.Add(new Department()
+            {
+                Id = "c",
+                Name = "c",
+                Students = new List<Student> { new Student() { Id = 14, Name = "Bar14 Barr", Grade = "2", Subjects = new List<Subject> { new Subject() { Id = cacl, Name = "Calculus" }, new Subject() { Id = math, Name = "Discrete Math" } } } },
+                Professor = new Professor() { Id = 8, Name = "Jim", Employment = EmploymentStatus.FullTime, Height = 1.69d }
+            });
+             _departments.Add(new Department()
+            {
+                Id = "d",
+                Name = "d",
+                Students = new List<Student> { new Student() { Id = 15, Name = "Bar15 Barr", Grade = "2", Subjects = new List<Subject> { new Subject() { Id = cacl, Name = "Calculus" }, new Subject() { Id = math, Name = "Discrete Math" } } } },
+                Professor = new Professor() { Id = 8, Name = "Jim", Employment = EmploymentStatus.FullTime, Height = 1.69d }
+            }); _departments.Add(new Department()
+            {
+                Id = "e",
+                Name = "e",
+                Students = new List<Student> { new Student() { Id = 16, Name = "Bar16 Barr", Grade = "2", Subjects = new List<Subject> { new Subject() { Id = cacl, Name = "Calculus" }, new Subject() { Id = math, Name = "Discrete Math" } } } },
                 Professor = new Professor() { Id = 8, Name = "Jim", Employment = EmploymentStatus.FullTime, Height = 1.69d }
             });
         }
