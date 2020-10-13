@@ -5,9 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using HotChocolate;
 using HotChocolate.Types;
-using HotChocolate.Resolvers;
-using ClassroomApp.Model;
-using ClassroomApp.Services;
+using HotChocolate.Types.Relay;
 
 namespace ClassroomApp.Types
 {
@@ -15,22 +13,10 @@ namespace ClassroomApp.Types
     {
         protected override void Configure(IObjectTypeDescriptor<Query> descriptor)
         {
-            // descriptor.Field(t => t.GetAllDepartments())
-            //     .Type<NonNullType<ListType<NonNullType<DepartmentType>>>>();
-
-            // descriptor.Field(t => t.GetDepartments(default, default))
-            //     .Type<NonNullType<ListType<NonNullType<DepartmentType>>>>();
-
-            // descriptor.Field(r => r.GetStudents(default, default))
-            //     .Name("students")
-            //     .Type<NonNullType<ListType<NonNullType<StudentType>>>>()
-            //     .Argument("deptId", a => a.DefaultValue("Engg"));
-
-            // descriptor.Field(t => t.GetSubjects(default, default, default))
-            //     .Name("subjects")
-            //     .Type<NonNullType<ListType<NonNullType<SubjectType>>>>()
-            //     .Argument("deptId", a => a.DefaultValue("Engg"))
-            //     .Argument("stuId", a => a.DefaultValue(6));
+            descriptor.Field(t => t.GetAllDepartments())
+                .Type<NonNullType<ListType<NonNullType<StringType>>>>()
+                .UsePaging<DepartmentType>()
+                .AddPagingArguments();
         }
     }
 }
