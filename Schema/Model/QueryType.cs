@@ -7,6 +7,7 @@ using HotChocolate;
 using HotChocolate.Types;
 using HotChocolate.Types.Relay;
 
+
 namespace ClassroomApp.Types
 {
     public class QueryType: ObjectType<Query>
@@ -15,7 +16,7 @@ namespace ClassroomApp.Types
         {
             descriptor.Field(t => t.GetAllDepartments())
                 .Type<NonNullType<ListType<NonNullType<StringType>>>>()
-                .UsePaging<ObjectType<DepartmentType>>();
+                .UsePaging<NonNullType<DepartmentType>>();
                 //.AddPagingArguments();
         }
     }
