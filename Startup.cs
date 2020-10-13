@@ -38,10 +38,9 @@ namespace ClassroomApp
             services.AddControllers().AddNewtonsoftJson();
 
             services.AddSingleton<IClassroomService, ClassroomService>();
-
             services.AddGraphQL(
                 SchemaBuilder.New()
-                    .AddQueryType<Query>()
+                    .AddQueryType<Query>(d => d.Name("Query"))
                     .AddType<DepartmentType>()
                     .AddType<StudentType>()
                     .AddType<SubjectType>()
