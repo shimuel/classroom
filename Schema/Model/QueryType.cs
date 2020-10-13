@@ -15,7 +15,7 @@ namespace ClassroomApp.Types
         {
             descriptor.Field(t => t.GetAllDepartments())
                 .Type<NonNullType<ListType<NonNullType<StringType>>>>()
-                .UsePaging<DepartmentType>()
+                .UsePaging<ObjectType<DepartmentType>>()
                 .AddPagingArguments();
         }
     }
