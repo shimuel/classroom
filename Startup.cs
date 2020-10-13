@@ -40,14 +40,14 @@ namespace ClassroomApp
             services.AddSingleton<IClassroomService, ClassroomService>();
 
             services.AddGraphQL(
-            SchemaBuilder.New()
-                .AddQueryType<Query>()
-                .AddType<DepartmentType>()
-                .AddType<StudentType>()
-                .AddType<SubjectType>()
-                .Create(),
-                new QueryExecutionOptions { ForceSerialExecution = true }
-            );
+                SchemaBuilder.New()
+                    .AddQueryType<Query>()
+                    .AddType<DepartmentType>()
+                    .AddType<StudentType>()
+                    .AddType<SubjectType>()
+                    .Create(),
+                    new QueryExecutionOptions { ForceSerialExecution = true }
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
